@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Edit Unicorn</h1>
+<div class="content" mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Nom</mat-label>
+    <input matInput type="text" [(ngModel)]="unicorn.name" placeholder="Nom">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Date de naissance</mat-label>
+    <input matInput type="number" [(ngModel)]="unicorn.birthyear" placeholder="Date de naissance">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Poids</mat-label>
+    <input matInput type="number" [(ngModel)]="unicorn.weight" placeholder="Poids">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button [mat-dialog-close]="unicorn">Sauvegarder</button>
+</div>

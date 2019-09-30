@@ -1,0 +1,22 @@
+.example-card {
+  max-width: 270px;
+  background-color: white;
+  margin: 50px;
+}
+
+.example-card:hover
+{
+  background-color: whitesmoke;
+  box-shadow: 2px 2px 2px grey;
+
+}
+
+.example-header-image {
+  background-size: cover;
+  width: 40px;
+}
+
+.card
+{
+  text-align: center;
+}

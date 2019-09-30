@@ -1,0 +1,8 @@
+<div class="aligner">
+    <app-unicorn-card class="aligner"
+                      *ngFor="let unicorn of unicorns; let i = index"
+                      [unicorn]="unicorn"
+                      (deleteUnicornEvent)="deleteUnicorn($event)"
+                      (editUnicornEvent)="editUnicorn($event, i)"></app-unicorn-card>
+</div>
+

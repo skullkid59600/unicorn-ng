@@ -1,0 +1,18 @@
+.aligner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: lavender;
+}
+
+.example-card {
+  max-width: 270px;
+  background-color: white;
+  margin: 50px;
+}
+
+.example-header-image {
+  background-size: cover;
+  width: 20px;
+}
+

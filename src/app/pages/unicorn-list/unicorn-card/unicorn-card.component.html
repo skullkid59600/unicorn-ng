@@ -1,0 +1,23 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image">
+      <img [src]="unicorn.photo"
+           style="width: 45px;border-radius: 100px;"></div>
+    <mat-card-title> {{ unicorn.name }}  </mat-card-title>
+    <mat-card-subtitle>Né(e) en {{ unicorn.birthyear }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="unicorn.photo" alt="unicorn">
+  <mat-card-content>
+    <p>
+      <b>Poids :</b> {{ unicorn.weight }} kg <br>
+      <b>Capacités :</b>  {{ unicorn.capacities }} <br>
+      <b>Hobbies :</b> {{ unicorn.hobbies }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions class="card">
+    <button mat-mini-fab color="primary">❤</button>
+    <button mat-raised-button (click)="editUnicorn()">Modifier</button>
+    <button mat-stroked-button color="basic" (click)="deleteUnicorn()">Supprimer</button>
+  </mat-card-actions>
+</mat-card>
+
