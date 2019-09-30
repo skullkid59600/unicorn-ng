@@ -16,8 +16,9 @@
   </mat-card-content>
   <mat-card-actions class="card">
     <button mat-mini-fab [color]="isInCart?'primary':null" (click)="toggleToCart()"><mat-icon>favorite</mat-icon></button>
-    <button mat-raised-button (click)="editUnicorn()">Modifier</button>
-    <button mat-stroked-button color="basic" (click)="deleteUnicorn()">Supprimer</button>
+    <button mat-raised-button (click)="editUnicorn()"><mat-icon>edit</mat-icon></button>
+    <button mat-raised-button [routerLink]="['/unicorn', unicorn.id]"><mat-icon>visibility</mat-icon></button>
+    <button mat-stroked-button color="basic" (click)="deleteUnicorn()"><mat-icon>delete</mat-icon></button>
   </mat-card-actions>
 </mat-card>
 

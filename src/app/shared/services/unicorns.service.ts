@@ -19,6 +19,10 @@ export class UnicornsService {
     return this.http.get<Unicorn[]>('http://localhost:3000/unicorns');
   }
 
+  public getUnicorn(id: number): Observable<Unicorn> {
+    return this.http.get<Unicorn>(`http://localhost:3000/unicorns/${id}`);
+  }
+
   public getUnicornsWithCapacities(): Observable<Unicorn[]> {
     return forkJoin([
       this.getUnicorns(),

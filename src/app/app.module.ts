@@ -20,6 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import { AdminComponent } from './pages/admin/admin.component';
+import { UnicornDetailsComponent } from './pages/unicorn-details/unicorn-details.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { AdminComponent } from './pages/admin/admin.component';
     MenuComponent,
     UnicornModalComponent,
     AdminComponent,
+    UnicornDetailsComponent,
   ],
   imports: [
     BrowserModule,
