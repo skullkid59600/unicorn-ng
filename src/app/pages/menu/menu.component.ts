@@ -8,5 +8,5 @@ import {Component} from '@angular/core';
   templateUrl: './menu.component.html',
   styleUrls: ['menu.component.scss'],
 })
-// tslint:disable-next-line:component-class-suffix
-export class MenuPositionExample {}
+export class MenuComponent {
+}

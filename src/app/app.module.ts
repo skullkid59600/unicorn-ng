@@ -14,7 +14,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDialogModule} from '@angular/material/dialog';
 import {UnicornModalComponent} from './pages/unicorn-list/unicorn-modal/unicorn-modal.component';
-import {MenuPositionExample} from './pages/menu/menu.component';
+import {MenuComponent} from './pages/menu/menu.component';
 import {MatMenuModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -28,7 +28,7 @@ import {FormsModule} from '@angular/forms';
     UnicornListComponent,
     UnicornCardComponent,
     MagicalNamePipe,
-    MenuPositionExample,
+    MenuComponent,
     UnicornModalComponent,
   ],
   imports: [

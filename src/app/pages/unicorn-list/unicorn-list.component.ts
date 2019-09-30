@@ -10,6 +10,7 @@ import {UnicornModalComponent} from './unicorn-modal/unicorn-modal.component';
   styleUrls: ['./unicorn-list.component.scss'],
 })
 export class UnicornListComponent implements OnInit {
+
   public unicorns: Unicorn[] = [];
 
   constructor(private unicornService: UnicornsService,
@@ -17,23 +18,24 @@ export class UnicornListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.unicornService.getUnicorns().subscribe((unicorns: Unicorn[]) => {
+    this.unicornService.getUnicornsWithMoreThanYearAndTwoCapacities().subscribe((unicorns: Unicorn[]) => {
       this.unicorns = unicorns;
     });
   }
 
   deleteUnicorn(unicornToDelete: Unicorn) {
-    this.unicornService.deleteUnicorns(unicornToDelete).subscribe(() => {
+    this.unicornService.deleteUnicorn(unicornToDelete).subscribe(() => {
       this.unicorns = this.unicorns.filter(unicorn => unicorn.id !== unicornToDelete.id);
     });
   }
 
   editUnicorn(unicornToEdit: Unicorn, i) {
     this.dialog.open(UnicornModalComponent, {
-      data: {unicorn: unicornToEdit},
+      data: {unicorn: {...unicornToEdit}},
     }).afterClosed().subscribe(unicorn => {
       if (unicorn) {
-        this.unicornService.updateUnicorns(unicorn).subscribe((unicornFormBack) => {
+        this.unicornService.updateUnicorn(unicorn).subscribe((unicornFormBack) => {
+          // TODO: revoir le i
           this.unicorns[i] = unicornFormBack;
         });
       }
