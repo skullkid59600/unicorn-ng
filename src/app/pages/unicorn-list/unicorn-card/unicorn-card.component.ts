@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Unicorn} from '../../../shared/models/unicorn.model';
 import {CartService} from '../../../shared/services/cart.service';
 
@@ -7,7 +7,7 @@ import {CartService} from '../../../shared/services/cart.service';
   templateUrl: './unicorn-card.component.html',
   styleUrls: ['./unicorn-card.component.scss']
 })
-export class UnicornCardComponent {
+export class UnicornCardComponent implements OnInit {
 
   @Input()
   public unicorn: Unicorn;
@@ -19,6 +19,10 @@ export class UnicornCardComponent {
 
   @Output()
   public editUnicornEvent = new EventEmitter();
+
+  ngOnInit(): void {
+    this.isInCart = this.cartService.isInCart(this.unicorn);
+  }
 
   constructor(private cartService: CartService) {
   }
@@ -39,5 +43,6 @@ export class UnicornCardComponent {
     }
     this.isInCart = !this.isInCart;
   }
+
 
 }

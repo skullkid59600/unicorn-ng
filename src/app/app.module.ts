@@ -13,12 +13,13 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDialogModule} from '@angular/material/dialog';
 import {UnicornModalComponent} from './pages/unicorn-list/unicorn-modal/unicorn-modal.component';
-import {MenuComponent} from './pages/menu/menu.component';
+import {MenuComponent} from './shared/components/menu/menu.component';
 import {MatMenuModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+import { AdminComponent } from './pages/admin/admin.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {FormsModule} from '@angular/forms';
     MagicalNamePipe,
     MenuComponent,
     UnicornModalComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
