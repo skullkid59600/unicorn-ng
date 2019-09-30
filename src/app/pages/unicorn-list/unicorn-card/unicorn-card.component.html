@@ -15,7 +15,7 @@
     </p>
   </mat-card-content>
   <mat-card-actions class="card">
-    <button mat-mini-fab color="primary" (click)="addToCart()"><mat-icon>favorite</mat-icon></button>
+    <button mat-mini-fab [color]="isInCart?'primary':null" (click)="toggleToCart()"><mat-icon>favorite</mat-icon></button>
     <button mat-raised-button (click)="editUnicorn()">Modifier</button>
     <button mat-stroked-button color="basic" (click)="deleteUnicorn()">Supprimer</button>
   </mat-card-actions>

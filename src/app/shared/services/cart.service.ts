@@ -9,8 +9,12 @@ export class CartService {
 
   public cart = new BehaviorSubject<Unicorn[]>([]);
 
-  public addToCart = (unicorn: Unicorn): void => {
+  public addToCart(unicorn: Unicorn) {
     this.cart.next(this.cart.getValue().concat(unicorn));
+  }
+
+  public removeFromCart(unicornToDelete: Unicorn) {
+    this.cart.next(this.cart.getValue().filter(u => u.id !== unicornToDelete.id));
   }
 
 }
