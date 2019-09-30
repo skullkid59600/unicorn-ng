@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Unicorn} from '../../../shared/models/unicorn.model';
+import {CartService} from '../../../shared/services/cart.service';
 
 
 @Component({
@@ -18,47 +19,19 @@ export class UnicornCardComponent {
   @Output()
   public editUnicornEvent = new EventEmitter();
 
-  constructor() {
+  constructor(private cartService: CartService) {
   }
 
-  deleteUnicorn() {
+  public deleteUnicorn() {
     this.deleteUnicornEvent.emit(this.unicorn);
   }
 
-  editUnicorn() {
+  public editUnicorn() {
     this.editUnicornEvent.emit(this.unicorn);
   }
+
+  public addToCart(): void {
+    this.cartService.addToCart(this.unicorn);
+  }
+
 }
-//   export class DialogOverviewExample {
-//   animal: string;
-//   name: string; }
-//
-//   openDialog(): void {
-//     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-//       width: '250px',
-//       data: {name: this.name, animal: this.animal}
-//     });
-//
-// }
-//
-// function Ctrl($scope) {
-//   var hasLiked = false;
-//   // tslint:disable-next-line:only-arrow-functions
-//   $scope.likeClick = function () {
-//     if (!hasLiked) {
-//       hasLiked = true;
-//       $scope.liked = 'Unlike';
-//       $scope.likeCount += 1;
-//     } else {
-//       hasLiked = false;
-//       $scope.liked = 'Like';
-//       $scope.likeCount -= 1;
-//     }
-//   };
-// }
-//
-// export interface DialogData {
-//   animal: string;
-//   name: string;
-// }
-//
