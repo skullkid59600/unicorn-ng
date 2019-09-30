@@ -1,19 +1,38 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Unicorn} from '../models/unicorn.model';
-import {Observable} from 'rxjs';
-import {filter, flatMap, map, toArray} from 'rxjs/operators';
+import {forkJoin, Observable} from 'rxjs';
+import {filter, flatMap, map, pluck, reduce, toArray} from 'rxjs/operators';
+import {CapacitiesService} from './capacities.service';
+import {Capacity} from '../models/capacity.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UnicornsService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private capacitiesService: CapacitiesService) {
   }
 
   public getUnicorns(): Observable<Unicorn[]> {
     return this.http.get<Unicorn[]>('http://localhost:3000/unicorns');
+  }
+
+  public getUnicornsWithCapacities(): Observable<Unicorn[]> {
+    return forkJoin([
+      this.getUnicorns(),
+      this.capacitiesService.getCapacities(),
+    ]).pipe(
+      map(([unicorns, capacities]) =>
+        unicorns.map((unicorn: Unicorn): Unicorn => ({
+          ...unicorn,
+          capacitiesLabels: unicorn.capacities.map((c: number): string =>
+            capacities.find((c2: Capacity) => c2.id === c).label
+          )
+        }))
+      ),
+    );
   }
 
   public getUnicornsWithMoreThanYearAndTwoCapacities(): Observable<Unicorn[]> {
@@ -23,6 +42,15 @@ export class UnicornsService {
       filter(unicorn => unicorn.capacities.length >= 2),
       map(unicorn => ({...unicorn, name: unicorn.name.toUpperCase()})),
       toArray(),
+    );
+  }
+
+  public sumAges(): Observable<number> {
+    return this.getUnicorns().pipe(
+      flatMap(e => e),
+      pluck('birthyear'),
+      map(birthyear => new Date().getFullYear() - birthyear),
+      reduce((acc, age) => acc + age, 0),
     );
   }
 

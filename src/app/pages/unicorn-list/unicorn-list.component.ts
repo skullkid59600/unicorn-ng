@@ -18,7 +18,7 @@ export class UnicornListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.unicornService.getUnicornsWithMoreThanYearAndTwoCapacities().subscribe((unicorns: Unicorn[]) => {
+    this.unicornService.getUnicornsWithCapacities().subscribe((unicorns: Unicorn[]) => {
       this.unicorns = unicorns;
     });
   }
